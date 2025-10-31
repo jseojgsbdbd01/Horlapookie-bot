@@ -1,0 +1,40 @@
+
+services:
+  - type: web
+    name: eclipse-md-bot
+    env: docker
+    dockerfilePath: ./Dockerfile
+    region: oregon
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: BOT_PREFIX
+        value: .
+        sync: false
+      - key: BOT_OWNER
+        sync: false
+        generateValue: false
+        description: "Your WhatsApp number without + or country code prefix (e.g., 2348028336218)"
+      - key: BOT_OWNER_NAME
+        value: Eclipse
+        sync: false
+      - key: BOT_NAME
+        value: 𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻
+        sync: false
+      - key: BOT_SESSION_DATA
+        sync: false
+        generateValue: false
+        description: "Session ID from https://eclipse-md-session.onrender.com"
+      - key: TEST_MODE_ONLY
+        value: false
+      - key: VIPS_WARNING
+        value: "0"
+      - key: OPENAI_API_KEY
+        sync: false
+        generateValue: false
+      - key: GEMINI_API_KEY
+        sync: false
+        generateValue: false
+    autoDeploy: true
+    healthCheckPath: /
