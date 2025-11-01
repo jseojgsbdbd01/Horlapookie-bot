@@ -28,14 +28,6 @@ services:
         sync: false
         generateValue: false
         description: "Session ID from https://horlapookie-session.onrender.com"
-      - key: TEST_MODE_ONLY
-        sync: false
-        generateValue: false
-        description: "Enable test mode only (true/false, default: false)"
-      - key: VIPS_WARNING
-        sync: false
-        generateValue: false
-        description: "VIPs warning threshold (default: 0)"
       - key: OPENAI_API_KEY
         sync: false
         generateValue: false
