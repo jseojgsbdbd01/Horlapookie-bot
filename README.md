@@ -151,7 +151,7 @@ AUTO_RECORDING=false         # Show recording indicator
 ### Bot Configuration
 ```bash
 BOT_PREFIX=.                 # Command prefix
-BOT_OWNER=2348028336218      # Owner phone number
+BOT_NUMBER=2348028336218     # Bot WhatsApp number
 BOT_NAME=𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻        # Bot display name
 BOT_OWNER_NAME=Eclipse       # Owner name
 BOT_SESSION_DATA=<session>   # WhatsApp session ID
@@ -180,14 +180,15 @@ The easiest way to deploy this bot is with Render's one-click deploy:
 5. Select **your forked repository** from the list
 6. Render will automatically detect the `render.yaml` blueprint
 7. Configure your environment variables in Render dashboard:
-   - `BOT_SESSION_DATA` - Your session ID (get from https://horlapookie-session.onrender.com)
-   - `BOT_OWNER` - **REQUIRED** - Your WhatsApp number without + or country code prefix
+   - `BOT_SESSION_DATA` - **REQUIRED** - Your session ID (get from https://horlapookie-session.onrender.com)
+   - `BOT_NUMBER` - **REQUIRED** - Your WhatsApp number without + or country code prefix
      - Example: `2348028336218` (not `+2348028336218`)
      - Used by: Owner verification, `.owner` command, all self-mode commands, `.block`, `.unblock`
+   - `OPENAI_API_KEY` - Optional: For AI features (GPT, ChatGPT commands)
+   - `GEMINI_API_KEY` - Optional: For Google AI features
    - `BOT_PREFIX` - Command prefix (default: `.`)
    - `BOT_NAME` - Your bot name (optional, default: 𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻)
    - `BOT_OWNER_NAME` - Your display name (optional, default: Eclipse)
-   - Optional: `OPENAI_API_KEY`, `GEMINI_API_KEY` for AI features
 8. Click "Create Web Service" and your bot will be deployed using Docker!
 
 **Important:** The bot uses **Docker** for deployment to ensure all system libraries (libvips, cairo, pango, ffmpeg) are properly installed. This prevents GLib-GObject errors and ensures stable operation.
@@ -214,7 +215,7 @@ npm install
 Set these secrets in your deployment platform (Render dashboard or local `.env` file):
 ```
 BOT_PREFIX=.                    # Command prefix (default: .)
-BOT_OWNER=2348028336218         # Your WhatsApp number (without + or spaces)
+BOT_NUMBER=2348028336218        # Bot WhatsApp number (without + or spaces)
 BOT_NAME=Your Bot Name          # Optional: Custom bot name
 BOT_OWNER_NAME=Your Name        # Optional: Your display name
 BOT_SESSION_DATA=your_session   # Your session ID from generator
@@ -223,9 +224,9 @@ GEMINI_API_KEY=xxx...           # Optional: For Google AI
 ```
 
 **Important Notes:**
-- `BOT_OWNER`: Your WhatsApp number **without country code prefix** (e.g., `2348028336218`)
+- `BOT_NUMBER`: Your WhatsApp number **without country code prefix** (e.g., `2348028336218`)
 - All commands that check owner permissions will use this environment variable
-- If `BOT_OWNER` is not set, the bot falls back to `config.js` default value
+- If `BOT_NUMBER` is not set, the bot falls back to `config.js` default value
 - Owner commands like `.owner`, `.block`, `.unblock`, and all self-mode commands use this number
 
 4. **Run the bot**
@@ -330,13 +331,13 @@ The bot reads configuration in this order:
 2. **config.js** - Fallback default values
 
 **Environment variables that override config.js:**
-- `BOT_OWNER` → Overrides `config.ownerNumber`
+- `BOT_NUMBER` → Overrides `config.ownerNumber`
 - `BOT_PREFIX` → Overrides `config.prefix`
 - `BOT_NAME` → Overrides `config.botName`
 - `BOT_OWNER_NAME` → Overrides `config.ownerName`
 - `BOT_SESSION_DATA` → Overrides `SESSION-ID` file
 
-**Commands affected by BOT_OWNER:**
+**Commands affected by BOT_NUMBER:**
 - `.owner` - Sends owner contact card
 - `.block` / `.unblock` - Owner verification
 - All `/commands/self/*` - Self-mode commands

@@ -10,7 +10,7 @@ services:
         value: production
       - key: BOT_PREFIX
         value: .
-      - key: BOT_OWNER
+      - key: BOT_NUMBER
         sync: false
         generateValue: false
         description: "Your WhatsApp number without + or country code prefix (e.g., 2348028336218)"
