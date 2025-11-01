@@ -1,4 +1,3 @@
-
 services:
   - type: web
     name: eclipse-md-bot
@@ -11,16 +10,15 @@ services:
         value: production
       - key: BOT_PREFIX
         value: .
-        sync: false
       - key: BOT_OWNER
         sync: false
         generateValue: false
         description: "Your WhatsApp number without + or country code prefix (e.g., 2348028336218)"
       - key: BOT_OWNER_NAME
-        value: Eclipse
+        value: "Eclipse"
         sync: false
       - key: BOT_NAME
-        value: 𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻
+        value: "𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻"
         sync: false
       - key: BOT_SESSION_DATA
         sync: false
