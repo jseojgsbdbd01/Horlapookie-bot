@@ -133,6 +133,37 @@ This bot includes powerful bug/crash commands that can permanently damage WhatsA
 - **API Testing** - Test REST endpoints
 - **JSON Tools** - Parse and format JSON data
 
+## ⚙️ Environment Variables Configuration
+
+You can configure automation features via environment variables in Render dashboard or locally:
+
+### Automation Settings
+```bash
+AUTO_VIEW_MESSAGE=false      # Auto-view view-once messages
+AUTO_VIEW_STATUS=false       # Auto-view WhatsApp statuses
+AUTO_REACT_STATUS=false      # Auto-react to statuses
+AUTO_REACT=false             # Auto-react to messages
+AUTO_STATUS_EMOJI=❤️         # Emoji for status reactions
+AUTO_TYPING=false            # Show typing indicator
+AUTO_RECORDING=false         # Show recording indicator
+```
+
+### Bot Configuration
+```bash
+BOT_PREFIX=.                 # Command prefix
+BOT_OWNER=2348028336218      # Owner phone number
+BOT_NAME=𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻        # Bot display name
+BOT_OWNER_NAME=Eclipse       # Owner name
+BOT_SESSION_DATA=<session>   # WhatsApp session ID
+```
+
+**How to Change in Render:**
+1. Go to your Render dashboard
+2. Navigate to your service
+3. Click on "Environment" tab
+4. Modify the values (true/false)
+5. Save changes - bot will auto-restart
+
 ## 🚀 Quick Start
 
 ### One-Click Deploy to Render

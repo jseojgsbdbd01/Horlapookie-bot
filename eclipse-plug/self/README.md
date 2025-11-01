@@ -42,8 +42,38 @@ Features:
   • Auto-blocks spammers
   • Prevents crash/bug attacks
   • Protects bot from malicious messages
+Environment Variable: None (file-based config)
 
 ⚠️ Owner Only: Yes
+```
+
+#### `anticall.js` - Anti-Call Protection
+```bash
+Usage: .anticall on/off
+Description: Automatically reject and block incoming calls
+Features:
+  • Auto-rejects voice/video calls
+  • Blocks caller automatically
+  • Sends notification to owner
+  • Prevents call spam
+Environment Variable: None (file-based config)
+
+⚠️ Owner Only: Yes
+```
+
+#### `antidelete.js` - Anti-Delete Messages
+```bash
+Usage: .antidelete on/off
+Description: Save and restore deleted messages
+Features:
+  • Captures deleted texts
+  • Saves deleted media
+  • Stores edit history
+  • Forwards deleted messages to owner
+Environment Variable: None (file-based config)
+
+⚠️ Owner Only: Yes
+⚠️ Privacy Warning: Use ethically
 ```
 
 #### `block.js` / `unblock.js` - User Management
@@ -71,6 +101,8 @@ Features:
   • Random emoji reactions
   • Customizable reaction emojis
   • Group/DM specific settings
+Environment Variable: AUTO_REACT (true/false)
+Render Dashboard: Can be changed via environment variables
 
 ⚠️ Owner Only: Yes
 ```
@@ -83,6 +115,8 @@ Features:
   • Natural conversation simulation
   • Configurable delay timing
   • Per-chat settings
+Environment Variable: AUTO_TYPING (true/false)
+Render Dashboard: Can be changed via environment variables
 
 ⚠️ Owner Only: Yes
 ```
@@ -95,6 +129,8 @@ Features:
   • Simulates voice message recording
   • Customizable timing
   • Chat-specific control
+Environment Variable: AUTO_RECORDING (true/false)
+Render Dashboard: Can be changed via environment variables
 
 ⚠️ Owner Only: Yes
 ```
@@ -107,6 +143,37 @@ Features:
   • Auto-view all statuses
   • Silent viewing mode
   • Configurable auto-react
+Environment Variable: AUTO_VIEW_STATUS (true/false), AUTO_REACT_STATUS (true/false), AUTO_STATUS_EMOJI
+Render Dashboard: Can be changed via environment variables
+
+⚠️ Owner Only: Yes
+```
+
+#### Auto View Message (No dedicated command)
+```bash
+Description: Automatically view view-once messages
+Environment Variable: AUTO_VIEW_MESSAGE (true/false)
+Render Dashboard: Can be changed via environment variables
+Note: This is controlled via environment variable only
+
+⚠️ Owner Only: Yes
+```
+
+#### `autogreet.js` - Auto Greeting System
+```bash
+Usage: .autogreet <action> [time] [message]
+Actions:
+  • .autogreet set <HH:MM> <message> - Set auto greeting
+  • .autogreet list - Show all scheduled greetings
+  • .autogreet delete <id> - Remove greeting
+  • .autogreet on/off - Enable/disable system
+Description: Schedule automatic greeting messages
+Features:
+  • Time-based auto messages
+  • Multiple greetings per day
+  • Supports mentions and formatting
+  • Timezone: Africa/Lagos (WAT)
+Environment Variable: None (file-based config)
 
 ⚠️ Owner Only: Yes
 ```
@@ -252,18 +319,55 @@ Features:
 ⚠️ WARNING: This will CRASH the bot!
 ```
 
-#### `antidelete.js` - Anti-Delete Messages
+#### `pmbug.js` - Private Message Bug
 ```bash
-Usage: .antidelete on/off
-Description: Save deleted messages
+Usage: .pmbug <number> <amount>
+Description: Send rapid messages (bug testing)
 Features:
-  • Capture deleted texts
-  • Save deleted media
-  • Store edit history
-  • Privacy concerns
+  • Stress test messaging system
+  • Debug message handling
+  • Test rate limits
 
 ⚠️ Owner Only: Yes
-⚠️ Privacy Warning: Use ethically
+⚠️ Danger Level: EXTREME
+⚠️ WARNING: Can cause temporary WhatsApp restrictions!
+```
+
+#### `unlimitedbug.js` - Unlimited Bug Messages
+```bash
+Usage: .unlimitedbug <target>
+Description: Send unlimited rapid messages
+Features:
+  • Extreme stress testing
+  • Performance debugging
+
+⚠️ Owner Only: Yes
+⚠️ Danger Level: EXTREME
+⚠️ WARNING: Can crash WhatsApp! Use only for testing!
+```
+
+#### `xioscrash.js` - Xios Crash Attack
+```bash
+Usage: .xioscrash <target>
+Description: Advanced crash testing mechanism
+
+⚠️ Owner Only: Yes
+⚠️ Danger Level: EXTREME
+⚠️ WARNING: Very dangerous! Testing purposes only!
+```
+
+#### `cleartmp.js` - Clear Temporary Files
+```bash
+Usage: .cleartmp
+Description: Delete all files in tmp directory
+Features:
+  • Free up storage space
+  • Clean cached media
+  • Remove temporary data
+
+⚠️ Owner Only: Yes
+⚠️ Danger Level: MEDIUM
+⚠️ Note: Cannot be undone
 ```
 
 ---

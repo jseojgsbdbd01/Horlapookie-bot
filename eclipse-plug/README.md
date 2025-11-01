@@ -164,18 +164,172 @@ slow.js          # Slow audio
 fast.js          # Fast audio
 ```
 
-### 🔐 Owner & Admin Commands
+### 🔐 Admin Commands (Group Admins)
 ```bash
-ban.js           # Ban users
-unban.js         # Unban users
-broadcast.js     # Broadcast message
-join.js          # Join group via link
-leave.js         # Leave group
-block.js         # Block user
-unblock.js       # Unblock user
-restart.js       # Restart bot
-update.js        # Update bot
-eval.js          # Execute code
+add.js           # Add members to group
+kick.js          # Remove members from group
+promote.js       # Promote to admin
+demote.js        # Demote from admin
+mute.js          # Mute group chat
+unmute.js        # Unmute group chat
+gdesc.js         # Change group description
+gname.js         # Change group name
+delete.js        # Delete bot messages
+disappear.js     # Set disappearing messages
+archive.js       # Archive chats
+antilink.js      # Configure anti-link protection
+welcome.js       # Configure welcome messages
+```
+
+### 🎯 All Available Commands (Complete List)
+```bash
+# AI & Smart Features
+ai2.js           # Advanced AI assistant
+ask.js           # Ask AI questions
+answer.js        # Get instant answers
+chatbot.js       # Conversational AI
+copilot.js       # GitHub Copilot integration
+gpt4.js          # GPT-4 powered responses
+grok.js          # Grok AI integration
+
+# Media Downloads
+ytmp3.js         # YouTube audio download
+ytmp4.js         # YouTube video download
+spotify.js       # Spotify downloader (not in files)
+instagram.js     # Instagram downloader (not in files)
+tiktok.js        # TikTok downloader
+twitter.js       # Twitter downloader (not in files)
+facebook.js      # Facebook downloader (not in files)
+
+# Image Effects
+sticker.js       # Create stickers
+attp.js          # Animated text
+brightness.js    # Adjust brightness
+contrast.js      # Adjust contrast
+colorize.js      # Colorize images
+dehaze.js        # Remove haze
+greyscale.js     # Convert to greyscale
+invert.js        # Invert colors
+flip.js          # Flip image
+expand.js        # Expand image
+
+# Text Effects & Logos
+carbon.js        # Code to image
+boom.js          # Boom text effect
+brutal.js        # Brutal text effect
+castle.js        # Castle text effect
+dragon.js        # Dragon text effect
+fire.js          # Fire text effect
+gta.js           # GTA style text
+neon.js          # Neon text effect (not in files)
+thunder.js       # Thunder effect (not in files)
+
+# Games
+hangman.js       # Hangman word game
+trivia.js        # Trivia quiz
+quiz.js          # Knowledge quiz (not in files)
+werewolf.js      # Werewolf game
+ship.js          # Relationship compatibility (not in files)
+dice.js          # Roll dice (not in files)
+
+# Religious
+Quran.js         # Quran verses
+bible.js         # Bible verses
+biblelist.js     # Bible books list
+
+# Sports & Football
+cl_matchday.js   # Champions League matches
+cl_table.js      # Champions League table
+cl_news.js       # Champions League news
+cl_top_scorer.js # Top scorers
+liga_portugal_* # Liga Portugal commands
+premier_league_* # Premier League commands
+serie_a_*        # Serie A commands
+la_liga_*        # La Liga commands
+bundesliga_*     # Bundesliga commands
+
+# Utilities
+translate.js     # Language translation
+qr.js            # QR code generator (not in files)
+weather.js       # Weather forecast (not in files)
+time.js          # World time (not in files)
+calculator.js    # Calculator (not in files)
+base64.js        # Base64 encode/decode
+hash.js          # Generate hashes
+dictionary.js    # Word definitions
+
+# Information
+wikipedia.js     # Wikipedia search (not in files)
+google.js        # Google search
+github.js        # GitHub repository info
+npm.js           # NPM package search (not in files)
+news.js          # Latest news (not in files)
+joke.js          # Random jokes
+forex.js         # Forex rates
+fxexchange.js    # Currency exchange
+currencylist.js  # List currencies
+
+# Group Management
+groupinfo.js     # Group information
+groupcommands.js # List group commands
+tagall.js        # Tag all members
+anounce.js       # Announcements
+id.js            # Get user/group IDs
+
+# Profile & Images
+avatar.js        # Profile avatars
+getpp.js         # Get profile picture
+fullpp.js        # Full resolution PP
+character.js     # Character images
+
+# Media Tools
+gif.js           # GIF search
+images.js        # Image search
+imgs.js          # Multiple images
+jpg.js           # Convert to JPG
+audio.js         # Audio processing
+bass.js          # Bass boost
+
+# Developer Tools
+gitcommits.js    # GitHub commits
+gitforks.js      # GitHub forks
+github.js        # GitHub info
+gitissues.js     # GitHub issues
+gitpulls.js      # Pull requests
+gitreleases.js   # Releases
+gitrepo.js       # Repository details
+gitsearch.js     # Search repos
+gitstats.js      # Repository stats
+gittrending.js   # Trending repos
+
+# Encryption & Security
+encrypt.js       # Encrypt text
+decrypt.js       # Decrypt text
+ebinary.js       # Encode binary
+debinary.js      # Decode binary
+
+# Fun & Entertainment
+emomix.js        # Mix emojis
+echo.js          # Echo messages
+goodmorning.js   # Morning greetings
+goodnight.js     # Night greetings
+hentai.js        # Hentai images (NSFW)
+hentaivid.js     # Hentai videos (NSFW)
+hneko.js         # Neko images (NSFW)
+hwaifu.js        # Waifu images (NSFW)
+blowjob.js       # Adult content (NSFW)
+
+# System & Info
+botinfo.js       # Bot information
+info.js          # General info
+checkupdate.js   # Check for updates
+keepalive.js     # Keep bot alive
+blocklist.js     # View blocked users
+
+# File Management
+catbox.js        # Upload to Catbox
+
+# And many more...
 ```
 
 ---

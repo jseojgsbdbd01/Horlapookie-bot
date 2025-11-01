@@ -34,5 +34,26 @@ services:
       - key: GEMINI_API_KEY
         sync: false
         generateValue: false
+      - key: AUTO_VIEW_MESSAGE
+        value: false
+        description: "Automatically view messages (true/false)"
+      - key: AUTO_VIEW_STATUS
+        value: false
+        description: "Automatically view WhatsApp statuses (true/false)"
+      - key: AUTO_REACT_STATUS
+        value: false
+        description: "Automatically react to statuses (true/false)"
+      - key: AUTO_REACT
+        value: false
+        description: "Automatically react to messages (true/false)"
+      - key: AUTO_STATUS_EMOJI
+        value: "❤️"
+        description: "Emoji to use for auto status reactions"
+      - key: AUTO_TYPING
+        value: false
+        description: "Show typing indicator automatically (true/false)"
+      - key: AUTO_RECORDING
+        value: false
+        description: "Show recording indicator automatically (true/false)"
     autoDeploy: true
     healthCheckPath: /

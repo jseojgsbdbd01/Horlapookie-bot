@@ -59,14 +59,14 @@ const persistentSettings = loadSettings();
 let botMode = persistentSettings.botMode || 'public'; // 'public' or 'self'
 global.botMode = botMode; // Make it globally accessible
 
-// Initialize automation globals from persistent settings
-global.autoViewMessage = persistentSettings.autoViewMessage || false;
-global.autoViewStatus = persistentSettings.autoViewStatus || false;
-global.autoReactStatus = persistentSettings.autoReactStatus || false;
-global.autoReact = persistentSettings.autoReact || false;
-global.autoStatusEmoji = persistentSettings.autoStatusEmoji || '❤️';
-global.autoTyping = persistentSettings.autoTyping || false;
-global.autoRecording = persistentSettings.autoRecording || false;
+// Initialize automation globals from environment variables (priority) or persistent settings (fallback)
+global.autoViewMessage = process.env.AUTO_VIEW_MESSAGE === 'true' ? true : (process.env.AUTO_VIEW_MESSAGE === 'false' ? false : (persistentSettings.autoViewMessage || false));
+global.autoViewStatus = process.env.AUTO_VIEW_STATUS === 'true' ? true : (process.env.AUTO_VIEW_STATUS === 'false' ? false : (persistentSettings.autoViewStatus || false));
+global.autoReactStatus = process.env.AUTO_REACT_STATUS === 'true' ? true : (process.env.AUTO_REACT_STATUS === 'false' ? false : (persistentSettings.autoReactStatus || false));
+global.autoReact = process.env.AUTO_REACT === 'true' ? true : (process.env.AUTO_REACT === 'false' ? false : (persistentSettings.autoReact || false));
+global.autoStatusEmoji = process.env.AUTO_STATUS_EMOJI || persistentSettings.autoStatusEmoji || '❤️';
+global.autoTyping = process.env.AUTO_TYPING === 'true' ? true : (process.env.AUTO_TYPING === 'false' ? false : (persistentSettings.autoTyping || false));
+global.autoRecording = process.env.AUTO_RECORDING === 'true' ? true : (process.env.AUTO_RECORDING === 'false' ? false : (persistentSettings.autoRecording || false));
 
 // Initialize anti-detection globals from persistent settings
 global.antiLinkWarn = persistentSettings.antiLinkWarn || {};
