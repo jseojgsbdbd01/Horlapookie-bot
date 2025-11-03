@@ -26,7 +26,7 @@ const platformName = {
 }[platform] || platform.charAt(0).toUpperCase() + platform.slice(1);
 
 // Get total command count dynamically
-const totalCommands = (global.commands?.size || 341) + (global.selfCommands?.size || 28);
+const totalCommands = (global.commands?.size || 342) + (global.selfCommands?.size || 28);
 
 // Get current time and date
 const now = new Date();
@@ -93,6 +93,8 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ╭━━━✦❮ 👥 GROUP MANAGEMENT ❯✦━⊷
 ┃✪  ${prefix}announce
 ┃✪  ${prefix}info
+┃✪  ${prefix}grouplink
+┃✪  ${prefix}getallmembers
 ┃✪  ${prefix}broadcast
 ┃✪  ${prefix}chatbot
 ┃✪  ${prefix}delete
@@ -159,8 +161,6 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ┃✪  ${prefix}answer
 ┃✪  ${prefix}brutal
 ┃✪  ${prefix}character
-┃✪  ${prefix}goodmorning
-┃✪  ${prefix}goodnight
 ┃✪  ${prefix}hangman
 ┃✪  ${prefix}joke
 ┃✪  ${prefix}myscore
@@ -244,7 +244,7 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ┃✪  ${prefix}yt audio
 ╰━━━━━━━━━━━━━━━━━⊷
 
-╭━━━✦❮ 🆕 NEWLY ADDED ❯✦━⊷
+╭━━━✦❮ 🆕 NEWLY ADDED <under fixing ❯✦━⊷
 ┃✪  ${prefix}shazam
 ┃✪  ${prefix}song2
 ┃✪  ${prefix}fancy
@@ -436,6 +436,8 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ╭━━━✦❮ ⚙️ SELF SETTINGS ❯✦━⊷
 ┃✪  ${prefix}settings (self)
 ┃✪  ${prefix}emojitoggle (self)
+┃✪  ${prefix}goodmorning
+┃✪  ${prefix}goodnight
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 🤖 SELF MODE COMMANDS ❯✦━⊷
