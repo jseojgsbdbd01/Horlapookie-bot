@@ -271,13 +271,15 @@ export default {
             if (musicResult && musicResult.status && musicResult.result?.download) {
                 const tempDir = path.join(__dirname, '../temp');
                 if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir);
-                const tempFile = path.join(tempDir, `${Date.now()}.mp3`);
+                const tempFile = path.join(tempDir, `${Date.now()}_raw.mp3`);
+                const convertedFile = path.join(tempDir, `${Date.now()}_converted.mp3`);
 
                 const response = await axios({
                     url: musicResult.result.download,
                     method: 'GET',
                     responseType: 'stream',
-                    timeout: 60000
+                    timeout: 60000,
+                    maxRedirects: 5
                 });
 
                 await new Promise((resolve, reject) => {
@@ -287,8 +289,39 @@ export default {
                     writer.on('error', reject);
                 });
 
+                // Verify file was downloaded and has content
+                if (!fs.existsSync(tempFile) || fs.statSync(tempFile).size < 1024) {
+                    throw new Error('Downloaded file is invalid or too small');
+                }
+
+                // Convert to proper MP3 format for better compatibility
+                let finalFile = tempFile;
+                try {
+                    const ffmpeg = (await import('fluent-ffmpeg')).default;
+                    await new Promise((resolve, reject) => {
+                        ffmpeg(tempFile)
+                            .audioCodec('libmp3lame')
+                            .audioBitrate(128)
+                            .audioChannels(2)
+                            .audioFrequency(44100)
+                            .toFormat('mp3')
+                            .save(convertedFile)
+                            .on('end', resolve)
+                            .on('error', (err) => {
+                                console.warn('[PLAY] Conversion failed, using original:', err?.message || err);
+                                resolve(); // Continue with original file
+                            });
+                    });
+                    
+                    if (fs.existsSync(convertedFile) && fs.statSync(convertedFile).size > 1024) {
+                        finalFile = convertedFile;
+                    }
+                } catch (convErr) {
+                    console.warn('[PLAY] FFmpeg conversion skipped:', convErr?.message || convErr);
+                }
+
                 await sock.sendMessage(chatId, {
-                    audio: { url: tempFile },
+                    audio: { url: finalFile },
                     mimetype: "audio/mpeg",
                     ptt: true,
                     waveform: [0,10,20,30,40,50,60,70,80,90,100,90,80,70,60,50,40,30,20,10,0]
@@ -299,7 +332,10 @@ export default {
                 });
 
                 setTimeout(() => {
-                    try { if (fs.existsSync(tempFile)) fs.unlinkSync(tempFile); } catch {}
+                    try { 
+                        if (fs.existsSync(tempFile)) fs.unlinkSync(tempFile);
+                        if (fs.existsSync(convertedFile)) fs.unlinkSync(convertedFile);
+                    } catch {}
                 }, 2000);
             }
 
