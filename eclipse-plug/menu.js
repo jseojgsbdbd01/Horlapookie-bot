@@ -26,7 +26,7 @@ const platformName = {
 }[platform] || platform.charAt(0).toUpperCase() + platform.slice(1);
 
 // Get total command count dynamically
-const totalCommands = (global.commands?.size || 355) + (global.selfCommands?.size || 28);
+const totalCommands = (global.commands?.size || 340) + (global.selfCommands?.size || 28);
 
 // Get current time and date
 const now = new Date();
@@ -108,9 +108,7 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ┃✪  ${prefix}welcome
 ┃✪  ${prefix}goodbye
 ┃✪  ${prefix}antilink
-┃✪  ${prefix}antidelete
 ┃✪  ${prefix}groupmanage
-┃✪  ${prefix}autoviewstatus
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ FOREX TOOLS ❯✦━⊷
@@ -136,12 +134,8 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 
 ╭━━━✦❮ 🎨 IMAGE GENERATOR ❯✦━⊷
 ┃✪  ${prefix}pollination
-┃✪  ${prefix}polly
 ┃✪  ${prefix}grok
-┃✪  ${prefix}grok-direct
 ┃✪  ${prefix}vision
-┃✪  ${prefix}describe
-┃✪  ${prefix}analyze
 ┃✪  ${prefix}remini
 ┃✪  ${prefix}colorize
 ┃✪  ${prefix}dehaze
@@ -150,9 +144,6 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 
 ╭━━━✦❮ 🎬 AI VIDEO GENERATOR ❯✦━⊷
 ┃✪  ${prefix}sora (self)
-┃✪  ${prefix}txt2video (self)
-┃✪  ${prefix}textvideo (self)
-┃✪  ${prefix}videogen (self)
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 🎙️ VOICE & AUDIO ❯✦━⊷
@@ -239,10 +230,7 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ╭━━━✦❮ 🎵 MUSIC & MEDIA ❯✦━⊷
 ┃✪  ${prefix}play
 ┃✪  ${prefix}play2
-┃✪  ${prefix}p
 ┃✪  ${prefix}song
-┃✪  ${prefix}music
-┃✪  ${prefix}music2
 ┃✪  ${prefix}lyric
 ┃✪  ${prefix}audio
 ┃✪  ${prefix}video
@@ -254,10 +242,7 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 
 ╭━━━✦❮ 🆕 NEWLY ADDED ❯✦━⊷
 ┃✪  ${prefix}shazam
-┃✪  ${prefix}play2
-┃✪  ${prefix}music2
 ┃✪  ${prefix}song2
-┃✪  ${prefix}styles
 ┃✪  ${prefix}fancy
 ┃✪  ${prefix}privacy
 ┃✪  ${prefix}privacysettings
@@ -300,13 +285,6 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ┃✪  ${prefix}xioscrash (self)
 ┃✪  ${prefix}pmbug (self)
 ┃✪  ${prefix}unlimitedbug (self)
-┃
-┃⚠️  EXTREME WARNING:
-┃⚠️  • These can PERMANENTLY crash WhatsApp
-┃⚠️  • VERY HIGH account ban risk
-┃⚠️  • Use ONLY for testing
-┃⚠️  • Owner-only access
-┃⚠️  • Use responsibly to prevent bans!
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 🔐 ENCRYPTION & SECURITY ❯✦━⊷
@@ -380,9 +358,6 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 
 ╭━━━✦❮ 🔍 SEARCH & INFO ❯✦━⊷
 ┃✪  ${prefix}dictionary
-┃✪  ${prefix}dict
-┃✪  ${prefix}define
-┃✪  ${prefix}meaning
 ┃✪  ${prefix}images
 ╰━━━━━━━━━━━━━━━━━⊷
 
@@ -439,7 +414,6 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ┃✪  ${prefix}autotyping (self)
 ┃✪  ${prefix}autoviewstatus (self)
 ┃✪  ${prefix}autogreet (self)
-┃✪  ${prefix}antidelete (self)
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 🛡️ ANTI-COMMANDS ❯✦━⊷
@@ -476,7 +450,6 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 🖼️ IMAGE SEARCH & GENERATION ❯✦━⊷
-┃✪  ${prefix}imgs
 ┃✪  ${prefix}image
 ┃✪  ${prefix}messi
 ╰━━━━━━━━━━━━━━━━━⊷
