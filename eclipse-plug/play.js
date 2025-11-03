@@ -153,8 +153,7 @@ export default {
                     await sock.sendMessage(chatId, {
                         audio: { url: tempFile },
                         mimetype: "audio/mpeg",
-                        ptt: true,
-                        waveform: [0,10,20,30,40,50,60,70,80,90,100,90,80,70,60,50,40,30,20,10,0]
+                        fileName: `${songTitle || 'audio'}.mp3`
                     }, { quoted: msg });
 
                     setTimeout(() => {
@@ -190,8 +189,7 @@ export default {
                         await sock.sendMessage(chatId, {
                             audio: { url: outFile },
                             mimetype: 'audio/mpeg',
-                            ptt: true,
-                            waveform: [0,10,20,30,40,50,60,70,80,90,100,90,80,70,60,50,40,30,20,10,0]
+                            fileName: `${songTitle || 'audio'}.mp3`
                         }, { quoted: msg });
 
                         setTimeout(() => {
@@ -248,8 +246,7 @@ export default {
                         await sock.sendMessage(chatId, {
                             audio: { url: converted ? tempOut : tempIn },
                             mimetype: converted ? 'audio/mpeg' : mime,
-                            ptt: true,
-                            waveform: [0,10,20,30,40,50,60,70,80,90,100,90,80,70,60,50,40,30,20,10,0]
+                            fileName: `${songTitle || 'audio'}.${converted ? 'mp3' : ext}`
                         }, { quoted: msg });
 
                         setTimeout(() => {
@@ -323,8 +320,17 @@ export default {
                 await sock.sendMessage(chatId, {
                     audio: { url: finalFile },
                     mimetype: "audio/mpeg",
-                    ptt: true,
-                    waveform: [0,10,20,30,40,50,60,70,80,90,100,90,80,70,60,50,40,30,20,10,0]
+                    fileName: `${musicResult.result.title || 'audio'}.mp3`,
+                    contextInfo: {
+                        externalAdReply: {
+                            title: musicResult.result.title || 'Music',
+                            body: 'Downloaded by HORLA POOKIE Bot',
+                            thumbnailUrl: musicResult.result.thumbnail || `https://i.ytimg.com/vi/${musicDownloader.extractVideoId(videoUrl)}/maxresdefault.jpg`,
+                            sourceUrl: videoUrl,
+                            mediaType: 2,
+                            mediaUrl: videoUrl
+                        }
+                    }
                 }, { quoted: msg });
 
                 await sock.sendMessage(chatId, {
