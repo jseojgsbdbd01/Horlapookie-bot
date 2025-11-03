@@ -11,7 +11,7 @@ const emojis = JSON.parse(fs.readFileSync(emojisPath, 'utf8'));
 const BASE_URL = 'https://noobs-api.top';
 
 export default {
-  name: 'play',
+  name: 'play2',
   description: 'Search and play MP3 music from YouTube (audio only) - Alternative method',
   aliases: ['music2', 'song2'],
   category: 'Music & Media',
@@ -71,7 +71,7 @@ export default {
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
             newsletterJid: '120363420551846782@newsletter',
-            newsletterName: 'HORLA POOKIE',
+            newsletterName: 'Your highness',
             serverMessageId: -1
           }
         }
