@@ -203,7 +203,7 @@ const musicDownloader = {
             const decrypted = await musicDownloader.crypto.decrypt(result.data.data);
             console.log(`[MUSIC_DOWNLOADER] Decryption successful, title: ${decrypted.title}`);
             
-            let downloadLink; // Fixed: Changed 'var' to 'let'
+            let downloadLink;
             try {
                 console.log(`[MUSIC_DOWNLOADER] Requesting download link...`);
                 downloadLink = await musicDownloader.makeRequest(`https://${cdn}${musicDownloader.api.download}`, {
@@ -280,7 +280,7 @@ const alternativeSource = {
 };
 
 export default {
-    name: 'p',
+    name: 'play',
     description: 'Download and send music from YouTube',
     aliases: ['song', 'music'],
     category: 'Media',
@@ -337,30 +337,45 @@ export default {
                 console.error('[PLAY] Error sending preview:', e?.message || e);
             }
 
-            // Primary: Music API
+            // Primary: Try musicDownloader API first
             let musicResult;
             try {
-                const musicData = await musicApi.getMusicData(videoUrl);
-                if (musicData?.success && musicData?.result?.download_url) {
-                    musicResult = {
-                        status: true,
-                        code: 200,
-                        result: {
-                            title: musicData.result.title,
-                            type: 'audio',
-                            format: 'm4a',
-                            thumbnail: musicData.result.thumbnail,
-                            download: musicData.result.download_url,
-                            id: musicData.result.id,
-                            quality: musicData.result.quality
-                        }
-                    };
-                } else {
-                    throw new Error('Music API did not return a download_url');
+                console.log('[PLAY] Attempting musicDownloader API...');
+                musicResult = await musicDownloader.downloadMusic(videoUrl, 'mp3');
+                
+                if (!musicResult || !musicResult.status || !musicResult.result?.download) {
+                    throw new Error('MusicDownloader API failed');
                 }
+                
+                console.log('[PLAY] MusicDownloader API success');
             } catch (err) {
-                console.error(`[PLAY] Music API failed:`);
-                if (err?.isAxiosError) logNetworkError('PLAY.musicApi', err); else console.error(err);
+                console.error(`[PLAY] MusicDownloader API failed:`, err?.message || err);
+                
+                // Fallback to princetechn API
+                try {
+                    console.log('[PLAY] Trying princetechn API...');
+                    const musicData = await musicApi.getMusicData(videoUrl);
+                    if (musicData?.success && musicData?.result?.download_url) {
+                        musicResult = {
+                            status: true,
+                            code: 200,
+                            result: {
+                                title: musicData.result.title,
+                                type: 'audio',
+                                format: 'm4a',
+                                thumbnail: musicData.result.thumbnail,
+                                download: musicData.result.download_url,
+                                id: musicData.result.id,
+                                quality: musicData.result.quality
+                            }
+                        };
+                        console.log('[PLAY] Princetechn API success');
+                    } else {
+                        throw new Error('Princetechn API did not return download_url');
+                    }
+                } catch (apiErr) {
+                    console.error(`[PLAY] Princetechn API failed:`, apiErr?.message || apiErr);
+                }
                 
                 // Fallback to ytdl-core
                 try {
@@ -527,97 +542,63 @@ export default {
 
             let response;
             try {
+                console.log('[PLAY] Downloading file from:', musicResult.result.download);
                 response = await axios({
                     url: musicResult.result.download,
                     method: 'GET',
-                    responseType: 'stream',
-                    timeout: 30000,
-                    maxRedirects: 5,
-                    headers: { 'user-agent': 'Mozilla/5.0' },
-                    validateStatus: () => true
+                    responseType: 'arraybuffer',
+                    timeout: 60000,
+                    maxRedirects: 10,
+                    headers: { 
+                        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                        'accept': '*/*'
+                    }
                 });
+                
+                if (response.status !== 200) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                console.log('[PLAY] Download successful, size:', response.data.length);
             } catch (err) {
+                console.error('[PLAY] Download failed:', err?.message || err);
                 logNetworkError('PLAY.fileDownload', err);
                 return await sock.sendMessage(chatId, {
-                    text: `${emojis.error} Failed to download the song (network error).`,
+                    text: `${emojis.error} Failed to download the song. The server may be unavailable.`,
                     react: { text: emojis.error, key: msg.key }
                 }, { quoted: msg });
             }
 
-            const ctHeader = response.headers?.['content-type'];
-            const ct = Array.isArray(ctHeader) ? (ctHeader[0] || '') : (ctHeader || '');
-            const ctLower = ct.toLowerCase();
-            const guessedExt = ctLower.includes('audio/mp4') || ctLower.includes('mp4') ? 'm4a'
-                : ctLower.includes('audio/webm') ? 'webm'
-                : ctLower.includes('mpeg') ? 'mp3'
-                : 'm4a';
-            const isAudioCT = ctLower.startsWith('audio/') || ctLower.includes('mpeg') || ctLower.includes('mp4') || ctLower.includes('webm');
-            const chosenMime = isAudioCT ? ctLower : (guessedExt === 'mp3' ? 'audio/mpeg' : guessedExt === 'webm' ? 'audio/webm' : 'audio/mp4');
+            // Determine file type and write buffer to file
+            const guessedExt = musicResult.result.format || 'mp3';
             const tempFile = path.join(tempDir, `${Date.now()}.${guessedExt}`);
-
-            if (response.status < 200 || response.status >= 300) {
-                console.error(`[PLAY] HTTP error downloading file: ${response.status} ${response.statusText}`);
-                return await sock.sendMessage(chatId, {
-                    text: `${emojis.error} Failed to download the song file from the server.`,
-                    react: { text: emojis.error, key: msg.key }
-                }, { quoted: msg });
-            }
-
-            await new Promise((resolve, reject) => {
-                const writer = fs.createWriteStream(tempFile);
-                response.data.on('error', (e) => {
-                    console.error('[PLAY] Stream error from server:', e?.message || e);
-                    reject(e);
-                });
-                writer.on('finish', resolve);
-                writer.on('close', resolve);
-                writer.on('error', (e) => {
-                    console.error('[PLAY] File write error:', e?.message || e);
-                    reject(e);
-                });
-                response.data.pipe(writer);
-            });
-
-            let fileSize = 0;
+            
             try {
-                const stats = fs.statSync(tempFile);
-                fileSize = stats.size;
-            } catch {}
-
-            if (!fileSize || fileSize < 10240) {
+                fs.writeFileSync(tempFile, Buffer.from(response.data));
+                console.log('[PLAY] File written successfully:', tempFile);
+            } catch (writeErr) {
+                console.error('[PLAY] File write error:', writeErr?.message || writeErr);
                 return await sock.sendMessage(chatId, {
-                    text: `${emojis.error} Song file seems invalid. Please try again.`,
+                    text: `${emojis.error} Failed to save the song file.`,
                     react: { text: emojis.error, key: msg.key }
                 }, { quoted: msg });
             }
 
-            // Convert to MP3 for better compatibility if needed
-            let sendPath = tempFile;
-            let sendMime = chosenMime;
-            let sendName = `${emojis.music} ${musicResult.result.title}.${guessedExt}`;
-            let convPath = '';
-
-            if (guessedExt !== 'mp3') {
-                try {
-                    const ffmpeg = (await import('fluent-ffmpeg')).default;
-                    convPath = path.join(tempDir, `${Date.now()}-conv.mp3`);
-                    
-                    await new Promise((resolve, reject) => {
-                        ffmpeg(tempFile)
-                            .audioCodec('libmp3lame')
-                            .audioBitrate(128)
-                            .toFormat('mp3')
-                            .save(convPath)
-                            .on('end', resolve)
-                            .on('error', reject);
-                    });
-                    sendPath = convPath;
-                    sendMime = 'audio/mpeg';
-                    sendName = `${emojis.music} ${musicResult.result.title}.mp3`;
-                } catch (e) {
-                    console.warn('[PLAY] Conversion to MP3 failed, sending original file:', e?.message || e);
-                }
+            // Validate file
+            const stats = fs.statSync(tempFile);
+            if (!stats.size || stats.size < 1024) {
+                console.error('[PLAY] File too small or empty');
+                try { fs.unlinkSync(tempFile); } catch {}
+                return await sock.sendMessage(chatId, {
+                    text: `${emojis.error} Downloaded file is invalid. Try again.`,
+                    react: { text: emojis.error, key: msg.key }
+                }, { quoted: msg });
             }
+
+            console.log('[PLAY] File size:', stats.size, 'bytes');
+            const sendMime = guessedExt === 'mp3' ? 'audio/mpeg' : 'audio/mp4';
+            const sendName = `${emojis.music} ${musicResult.result.title}.${guessedExt}`;
+            const sendPath = tempFile;
 
             // Send the file with response time (similar to ping.js)
             const elapsed = Date.now() - start;
