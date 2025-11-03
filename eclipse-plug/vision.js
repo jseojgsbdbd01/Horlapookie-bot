@@ -1,8 +1,6 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { downloadContentFromMessage } from '@whiskeysockets/baileys';
+import { analyzeImageWithVision } from '../lib/myfunc1.js';
 import fs from 'fs';
 import path from 'path';
-import settings from '../settings.js';
 
 const emojisPath = path.join(process.cwd(), 'data', 'emojis.json');
 const emojis = JSON.parse(fs.readFileSync(emojisPath, 'utf8'));
@@ -33,46 +31,34 @@ export default {
       }, { quoted: msg });
 
       const imageMessage = msg.message?.imageMessage || quotedMsg?.imageMessage;
-      
-      // Download image using Baileys method
-      const stream = await downloadContentFromMessage(imageMessage, 'image');
-      const chunks = [];
-      for await (const chunk of stream) {
-        chunks.push(chunk);
-      }
-      const imageBuffer = Buffer.concat(chunks);
-
-      const apiKey = settings.geminiApiKey;
-      if (!apiKey) {
-        return await sock.sendMessage(from, {
-          text: `${emojis.error} *Gemini API key not found!*\n\n⚙️ Please set geminiApiKey in settings.js.\n\n📝 Get your free API key at:\nhttps://makersuite.google.com/app/apikey`
-        }, { quoted: msg });
-      }
-
-      const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
-
       const prompt = args.length ? args.join(' ') : 'Describe this image in detail.';
 
-      const imageParts = [{
-        inlineData: {
-          data: imageBuffer.toString('base64'),
-          mimeType: imageMessage.mimetype || 'image/jpeg'
+      const result = await analyzeImageWithVision(imageMessage, prompt);
+
+      if (!result.success) {
+        let errorMessage = `${emojis.error} *Failed to analyze image*\n\n`;
+        
+        if (result.error.includes('API key')) {
+          errorMessage += '🔑 Invalid or missing API key. Please set geminiApiKey in settings.js.\n\n📝 Get your free API key at:\nhttps://makersuite.google.com/app/apikey';
+        } else if (result.error.includes('quota')) {
+          errorMessage += '📊 API quota exceeded. Please try again later.';
+        } else if (result.error.includes('timeout')) {
+          errorMessage += '⏰ Request timed out. Please try again.';
+        } else {
+          errorMessage += `🛠️ Error: ${result.error}`;
         }
-      }];
-
-      const result = await model.generateContent([prompt, ...imageParts]);
-      const response = await result.response;
-      const description = response.text();
-
-      if (!description) {
-        return await sock.sendMessage(from, {
-          text: `${emojis.warning} *No response received from Gemini AI.*`
+        
+        await sock.sendMessage(from, {
+          text: errorMessage
         }, { quoted: msg });
+
+        return await sock.sendMessage(from, {
+          react: { text: emojis.error, key: msg.key }
+        });
       }
 
       await sock.sendMessage(from, {
-        text: `${emojis.success} *Image Analysis Result:*\n\n${description}\n\n> Powered by Gemini AI`
+        text: `${emojis.success} *Image Analysis Result:*\n\n${result.description}\n\n> Powered by Gemini AI`
       }, { quoted: msg });
 
       await sock.sendMessage(from, {
@@ -82,20 +68,8 @@ export default {
     } catch (err) {
       console.error('Vision command error:', err);
       
-      let errorMessage = `${emojis.error} *Failed to analyze image*\n\n`;
-      
-      if (err.message?.includes('API key')) {
-        errorMessage += '🔑 Invalid or missing API key. Please check your GEMINI_API_KEY.';
-      } else if (err.message?.includes('quota')) {
-        errorMessage += '📊 API quota exceeded. Please try again later.';
-      } else if (err.code === 'ECONNABORTED' || err.code === 'ETIMEDOUT') {
-        errorMessage += '⏰ Request timed out. Please try again.';
-      } else {
-        errorMessage += `🛠️ Error: ${err.message}`;
-      }
-      
       await sock.sendMessage(from, {
-        text: errorMessage
+        text: `${emojis.error} *Unexpected error occurred*\n\n🛠️ ${err.message}`
       }, { quoted: msg });
 
       await sock.sendMessage(from, {
