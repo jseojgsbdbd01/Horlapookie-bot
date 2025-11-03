@@ -29,13 +29,27 @@ export default {
 
       try {
         let res = await sock.newsletterMetadata("invite", idPart);
+        
+        // Extract state properly if it's an object
+        let stateText = "–";
+        if (res.state) {
+          if (typeof res.state === 'object') {
+            stateText = res.state.type || JSON.stringify(res.state);
+          } else {
+            stateText = res.state;
+          }
+        }
 
+        // Get actual subscriber count
+        const subscriberCount = res.subscribers || res.subscriber_count || 0;
+        
         captionArr.push(
-          `*${res.name || "No Name"}*\n` +
+          `*${res.name || res.thread_metadata?.name?.text || "No Name"}*\n` +
           `* Channel ID: ${res.id}\n` +
-          `* Followers: ${res.subscribers || 0}\n` +
-          `* Verification: ${res.verification || "–"}\n` +
-          `* State: ${res.state || "–"}\n`
+          `* Followers: ${subscriberCount}\n` +
+          `* Verification: ${res.verification || res.verified || "–"}\n` +
+          `* State: ${stateText}\n` +
+          `* Description: ${res.description || res.thread_metadata?.description?.text || "No description"}`
         );
 
       } catch (err) {
