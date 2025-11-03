@@ -26,7 +26,7 @@ const platformName = {
 }[platform] || platform.charAt(0).toUpperCase() + platform.slice(1);
 
 // Get total command count dynamically
-const totalCommands = (global.commands?.size || 342) + (global.selfCommands?.size || 28);
+const totalCommands = (global.commands?.size || 343) + (global.selfCommands?.size || 28);
 
 // Get current time and date
 const now = new Date();
@@ -101,7 +101,6 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ┃✪  ${prefix}demote
 ┃✪  ${prefix}gdesc
 ┃✪  ${prefix}gname
-┃✪  ${prefix}gpt4
 ┃✪  ${prefix}groupinfo
 ┃✪  ${prefix}kick
 ┃✪  ${prefix}lock
@@ -132,13 +131,10 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ┃✪  ${prefix}gpt4
 ┃✪  ${prefix}ai2
 ┃✪  ${prefix}translate
-┃✪  ${prefix}google
-┃✪  ${prefix}gta
 ┃✪  ${prefix}gpt2
-┃✪  ${prefix}bing
 ╰━━━━━━━━━━━━━━━━━⊷
 
-╭━━━✦❮ 🎨 IMAGE GENERATOR ❯✦━⊷
+╭━━━✦❮ 🎨 IMAGE GENERATOR &ANALYZING ❯✦━⊷
 ┃✪  ${prefix}pollination
 ┃✪  ${prefix}grok
 ┃✪  ${prefix}vision
@@ -150,6 +146,7 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 
 ╭━━━✦❮ 🎬 AI VIDEO GENERATOR ❯✦━⊷
 ┃✪  ${prefix}sora (self)
+┃✪  ${prefix}bing
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 🎙️ VOICE & AUDIO ❯✦━⊷
@@ -186,6 +183,7 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 
 ╭━━━✦❮ 🔗 WORD CHAIN GAMES ❯✦━⊷
 ┃✪  ${prefix}wcg
+┃✪  ${prefix}wcg join
 ┃✪  ${prefix}wcg start
 ┃✪  ${prefix}wcg end
 ┃✪  ${prefix}wcg <word>
@@ -285,10 +283,10 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ ☠️ BUG/CRASH COMMANDS ❯✦━⊷
-┃✪  ${prefix}crash (self)
-┃✪  ${prefix}xioscrash (self)
-┃✪  ${prefix}pmbug (self)
-┃✪  ${prefix}unlimitedbug (self)
+┃✪  ${prefix}crash 
+┃✪  ${prefix}xioscrash 
+┃✪  ${prefix}pmbug 
+┃✪  ${prefix}unlimitedbug 
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 🔐 ENCRYPTION & SECURITY ❯✦━⊷
@@ -363,12 +361,11 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ╭━━━✦❮ 🔍 SEARCH & INFO ❯✦━⊷
 ┃✪  ${prefix}dictionary
 ┃✪  ${prefix}images
+┃✪  ${prefix}google
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 💡 UTILITY TOOLS ❯✦━⊷
-┃✪  ${prefix}blacklist
 ┃✪  ${prefix}menu
-┃✪  ${prefix}save
 ┃✪  ${prefix}vv
 ┃✪  ${prefix}owner
 ╰━━━━━━━━━━━━━━━━━⊷
@@ -377,6 +374,7 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ┃✪  ${prefix}catbox
 ┃✪  ${prefix}expand
 ┃✪  ${prefix}qrcode
+┃✪  ${prefix}trt2
 ┃✪  ${prefix}shorten
 ┃✪  ${prefix}urlcheck
 ┃✪  ${prefix}urlpreview
@@ -393,58 +391,55 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 
 ╭━━━✦❮ 🔄 BOT MODES ❯✦━⊷
 ┃✪  ${prefix}mode
+┃✪  ${prefix}self
+┃✪  ${prefix}public
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ ℹ️ BOT INFO ❯✦━⊷
 ┃✪  ${prefix}xmd
 ┃✪  ${prefix}alive
-┃✪  ${prefix}online
-┃✪  ${prefix}status
 ╰━━━━━━━━━━━━━━━━━⊷
 
-╭━━━✦❮ 🔧 OTHER COMMANDS ❯✦━⊷
+╭━━━✦❮ 🔄 AUTOMATION COMMANDS ❯✦━⊷
+┃✪  ${prefix}autoreact 
+┃✪  ${prefix}autorecording 
+┃✪  ${prefix}autotyping 
+┃✪  ${prefix}autoviewstatus 
+┃✪  ${prefix}autogreet 
+╰━━━━━━━━━━━━━━━━━⊷
+
+╭━━━✦❮ 🛡️ ANTI-COMMANDS ❯✦━⊷
+┃✪  ${prefix}anticall 
+┃✪  ${prefix}antidelete 
+┃✪  ${prefix}antilink
+┃✪  ${prefix}antibug
+┃✪  ${prefix}cleartmp 
+╰━━━━━━━━━━━━━━━━━⊷
+
+╭━━━✦❮ 📁 FILE MANAGEMENT ❯✦━⊷
+┃✪  ${prefix}datafile 
+┃✪  ${prefix}files 
+╰━━━━━━━━━━━━━━━━━⊷
+
+╭━━━✦❮ ⚙️ SELF SETTINGS ❯✦━⊷
+┃✪  ${prefix}settings 
+┃✪  ${prefix}emojitoggle 
+┃✪  ${prefix}goodmorning
+┃✪  ${prefix}goodnight
 ┃✪  ${prefix}keepon
 ┃✪  ${prefix}keepoff
-┃✪  ${prefix}qr
 ┃✪  ${prefix}reboot
-┃✪  ${prefix}trt2
 ┃✪  ${prefix}checkupdate
 ┃✪  ${prefix}update
 ╰━━━━━━━━━━━━━━━━━⊷
 
-╭━━━✦❮ 🔄 AUTOMATION COMMANDS ❯✦━⊷
-┃✪  ${prefix}autoreact (self)
-┃✪  ${prefix}autorecording (self)
-┃✪  ${prefix}autotyping (self)
-┃✪  ${prefix}autoviewstatus (self)
-┃✪  ${prefix}autogreet (self)
-╰━━━━━━━━━━━━━━━━━⊷
-
-╭━━━✦❮ 🛡️ ANTI-COMMANDS ❯✦━⊷
-┃✪  ${prefix}anticall (self)
-┃✪  ${prefix}antidelete (self)
-┃✪  ${prefix}antilink
-┃✪  ${prefix}antibug
-┃✪  ${prefix}cleartmp (self)
-╰━━━━━━━━━━━━━━━━━⊷
-
-╭━━━✦❮ 📁 FILE MANAGEMENT ❯✦━⊷
-┃✪  ${prefix}datafile (self)
-┃✪  ${prefix}files (self)
-╰━━━━━━━━━━━━━━━━━⊷
-
-╭━━━✦❮ ⚙️ SELF SETTINGS ❯✦━⊷
-┃✪  ${prefix}settings (self)
-┃✪  ${prefix}emojitoggle (self)
-┃✪  ${prefix}goodmorning
-┃✪  ${prefix}goodnight
-╰━━━━━━━━━━━━━━━━━⊷
-
-╭━━━✦❮ 🤖 SELF MODE COMMANDS ❯✦━⊷
-┃✪  ${prefix}block (self)
-┃✪  ${prefix}fullpp (self)
-┃✪  ${prefix}unblock (self)
-┃✪  ${prefix}vv2 (self)
+╭━━━✦❮ 🤖 OWNER COMMANDS ❯✦━⊷
+┃✪  ${prefix}block 
+┃✪  ${prefix}blacklist
+┃✪  ${prefix}fullpp 
+┃✪  ${prefix}unblock 
+┃✪  ${prefix}vv2 
+┃✪  ${prefix}save
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 📸 SCREENSHOTS ❯✦━⊷
