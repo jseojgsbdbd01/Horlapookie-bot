@@ -26,7 +26,7 @@ const platformName = {
 }[platform] || platform.charAt(0).toUpperCase() + platform.slice(1);
 
 // Get total command count dynamically
-const totalCommands = (global.commands?.size || 340) + (global.selfCommands?.size || 28);
+const totalCommands = (global.commands?.size || 341) + (global.selfCommands?.size || 28);
 
 // Get current time and date
 const now = new Date();
@@ -84,6 +84,10 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ┃✪  ${prefix}time
 ┃✪  ${prefix}uptime
 ┃✪  ${prefix}userinfo
+╰━━━━━━━━━━━━━━━━━⊷
+
+╭━━━✦❮ 📢 CHANNEL TOOLS ❯✦━⊷
+┃✪  ${prefix}newsletter
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 👥 GROUP MANAGEMENT ❯✦━⊷
