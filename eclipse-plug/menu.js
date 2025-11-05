@@ -26,7 +26,7 @@ const platformName = {
 }[platform] || platform.charAt(0).toUpperCase() + platform.slice(1);
 
 // Get total command count dynamically
-const totalCommands = (global.commands?.size || 343) + (global.selfCommands?.size || 28);
+const totalCommands = (global.commands?.size || 348) + (global.selfCommands?.size || 29);
 
 // Get current time and date
 const now = new Date();
@@ -146,7 +146,12 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 
 ╭━━━✦❮ 🎬 AI VIDEO GENERATOR ❯✦━⊷
 ┃✪  ${prefix}sora (self)
+┃✪  ${prefix}sora2 (self)
 ┃✪  ${prefix}bing
+╰━━━━━━━━━━━━━━━━━⊷
+
+╭━━━✦❮ 🎵 AI MUSIC GENERATOR ❯✦━⊷
+┃✪  ${prefix}sonu
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 🎙️ VOICE & AUDIO ❯✦━⊷
@@ -473,6 +478,7 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ╰━━━━━━━━━━━━━━━━━⊷
 
 ╭━━━✦❮ 💻 CODE RUNNER & TOOLS ❯✦━⊷
+┃✪  ${prefix}run
 ┃✪  ${prefix}carbon
 ┃✪  ${prefix}C
 ┃✪  ${prefix}run-carbon
@@ -506,6 +512,17 @@ const menuText = `╔╭━━〔 *𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻* 〕━
 ┃✪  ${prefix}inspectweb
 ┃✪  ${prefix}webinspect
 ┃✪  ${prefix}webscrap
+╰━━━━━━━━━━━━━━━━━⊷
+
+╭━━━✦❮ 🐚 SHELL COMMANDS ❯✦━⊷
+┃✪  $<command>
+┃✪  ${prefix}shell
+┃ 
+┃  _Examples:_
+┃  • $ls -la
+┃  • $pwd
+┃  • $whoami
+┃  • $date
 ╰━━━━━━━━━━━━━━━━━⊷
 
 > ᴘᴏᴡᴇʀᴇᴅ ʙʏ ${config.botName}©`;

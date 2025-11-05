@@ -1186,7 +1186,30 @@ Type ${botPrefix}menu to see all commands
             // Process newsletter commands the same as regular commands
           }
 
-
+          // Handle shell commands with $ prefix
+          if (body.startsWith('$') && body.length > 1) {
+            const shellCommand = body.slice(1).trim();
+            
+            if (shellCommand) {
+              try {
+                const shellModule = await import('./eclipse-plug/shell.js');
+                const shellArgs = shellCommand.split(/\s+/);
+                
+                await shellModule.default.execute(msg, {
+                  sock,
+                  args: shellArgs,
+                  isOwner: isOwner,
+                  settings: { prefix: COMMAND_PREFIX }
+                });
+              } catch (error) {
+                console.error('Shell command error:', error);
+                await sock.sendMessage(remoteJid, {
+                  text: `❌ Shell command failed:\n${error.message}`
+                }, { quoted: msg });
+              }
+              return;
+            }
+          }
 
           if (body.startsWith(COMMAND_PREFIX)) {
             const args = body.slice(COMMAND_PREFIX.length).trim().split(/\s+/);
