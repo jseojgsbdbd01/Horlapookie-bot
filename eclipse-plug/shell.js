@@ -4,11 +4,17 @@ export default {
   name: 'shell',
   description: 'Execute shell commands (use with $ prefix)',
   category: 'Shell Commands',
-  async execute(msg, { sock, args, settings }) {
+  async execute(msg, { sock, args, settings, isOwner }) {
     const from = msg.key.remoteJid;
     const prefix = settings.prefix || '.';
     
     try {
+      if (!isOwner) {
+        return await sock.sendMessage(from, { 
+          text: '🚫 *Access Denied*\n\nShell commands are restricted to the bot owner only for security reasons.' 
+        }, { quoted: msg });
+      }
+
       if (!args || args.length === 0) {
         return await sock.sendMessage(from, { 
           text: `*🐚 Shell Command Runner*\n\nExecute shell/terminal commands directly!\n\n*Usage:*\n$<command>\n\n*Examples:*\n$ls -la\n$pwd\n$whoami\n$date\n$df -h\n$free -m\n\n*Note:* Dangerous commands are blocked for safety.\n\n_You can also use:_ ${prefix}shell <command>`
