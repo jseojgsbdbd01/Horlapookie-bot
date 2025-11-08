@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const PAIRING_SITE_URL = 'https://eclipse-session.onrender.com/pair';
+const PAIRING_SITE_URL = 'https://eclipse-session.onrender.com/code';
 
 export default {
   name: 'pair',
@@ -30,8 +30,12 @@ export default {
         text: '⏳ *Generating pairing code...*\n\nPlease wait, this may take a few seconds...'
       }, { quoted: msg });
 
-      const response = await axios.get(`${PAIRING_SITE_URL}/?number=${phoneNumber}`, {
-        timeout: 60000
+      const response = await axios.get(`${PAIRING_SITE_URL}?number=${phoneNumber}`, {
+        timeout: 90000,
+        headers: {
+          'Accept': 'application/json',
+          'User-Agent': 'Mozilla/5.0'
+        }
       });
 
       if (response.data && response.data.code) {

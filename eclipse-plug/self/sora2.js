@@ -14,7 +14,7 @@ export default {
     try {
       if (!args || args.length === 0) {
         return await sock.sendMessage(from, { 
-          text: `*🎬 Sora-2 Video Generator*\n\n⚠️ *Service Status:* This API is currently experiencing issues.\n\nGenerate AI videos from text prompts!\n\n*Usage:*\n${prefix}sora2 <prompt>\n\n*Example:*\n${prefix}sora2 A cat walking on the beach at sunset\n${prefix}sora2 Ocean waves crashing on rocks\n\n*Note:*\n• Keep prompts clear and descriptive\n• Video generation takes 2-5 minutes\n• API may be temporarily unavailable\n\n_Trying alternative video generation..._`
+          text: `*🎬 Sora-2 Video Generator*\n\n⚠️ *Service Status:* The Sora-2 API is currently experiencing issues with the upstream provider.\n\nGenerate AI videos from text prompts!\n\n*Usage:*\n${prefix}sora2 <prompt>\n\n*Example:*\n${prefix}sora2 A cat walking on the beach at sunset\n${prefix}sora2 Ocean waves crashing on rocks\n\n*Note:*\n• The API wrapper is working but the underlying Sora-2 service returns 404 errors\n• Please try again later or contact the API provider\n• Alternative: Use ${prefix}sora command for video generation`
         }, { quoted: msg });
       }
 
@@ -49,7 +49,7 @@ export default {
 
       if (!createResult.success) {
         return await sock.sendMessage(from, { 
-          text: `❌ *Sora-2 Video Generation Failed*\n\n*Error:* ${createResult.error}\n\n*Alternative:* Try using ${prefix}sora instead, which uses a different video generation API.` 
+          text: `❌ *Sora-2 Video Generation Failed*\n\n*Error:* ${createResult.error}\n\n*Reason:* The Sora-2 underlying service is currently unavailable (returns 404). The API wrapper is working correctly but cannot reach the video generation service.\n\n*Alternative:* Try using ${prefix}sora instead, which uses a different video generation API.` 
         }, { quoted: msg });
       }
 

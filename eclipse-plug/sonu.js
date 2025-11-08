@@ -32,13 +32,20 @@ export default {
       }
 
       await sock.sendMessage(from, { 
-        text: `🎵 *Generating music...*\n\nLyrics: ${lyrics}\n${style ? `Style: ${style}\n` : ''}${instrument ? `Instrument: ${instrument}\n` : ''}\n_This may take 30-60 seconds..._` 
+        text: `🎵 *Generating AI music...*\n\nLyrics: ${lyrics}\n${style ? `Style: ${style}\n` : ''}${instrument ? `Instrument: ${instrument}\n` : ''}\n_This may take 1-2 minutes. Please wait..._` 
       }, { quoted: msg });
 
       const result = await generateSonuMusic(lyrics, style, instrument);
-      const response = formatSonuResponse(result);
 
-      await sock.sendMessage(from, { text: response }, { quoted: msg });
+      if (!result.success) {
+        return await sock.sendMessage(from, { 
+          text: `❌ *Music Generation Failed*\n\n${result.error}\n\n*Tip:* Try simpler lyrics or different style/instrument combinations.` 
+        }, { quoted: msg });
+      }
+
+      await sock.sendMessage(from, { 
+        text: `✅ *AI Music Generated Successfully!*\n\n*Title:* ${result.title}\n\n_Sending audio file(s)..._` 
+      }, { quoted: msg });
 
       if (result.success && result.audioUrl) {
         try {
