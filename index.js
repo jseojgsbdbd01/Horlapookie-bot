@@ -50,7 +50,22 @@ const MODS_FILE = path.join(__dirname, 'data', 'moderators.json');
 const BANNED_FILE = path.join(__dirname, 'data', 'banned.json');
 const WELCOME_CONFIG_FILE = path.join(__dirname, 'data', 'welcomeConfig.json');
 const SESSION_ID_FILE = path.join(__dirname, 'SESSION-ID');
+const ANTIDELETE_MESSAGES_FILE = path.join(__dirname, 'data', 'antidelete_messages.json');
 
+// Clear antidelete messages on bot restart
+function clearAntideleteMessages() {
+  try {
+    if (fs.existsSync(ANTIDELETE_MESSAGES_FILE)) {
+      fs.writeFileSync(ANTIDELETE_MESSAGES_FILE, JSON.stringify({}, null, 2));
+      console.log('[ANTIDELETE] Cleared stored messages on restart');
+    }
+  } catch (err) {
+    console.error('[ANTIDELETE] Error clearing messages:', err);
+  }
+}
+
+// Clear antidelete messages immediately on startup
+clearAntideleteMessages();
 
 let botActive = true;
 
