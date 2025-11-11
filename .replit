@@ -11,15 +11,15 @@ runButton = "Project"
 [[workflows.workflow]]
 name = "Project"
 mode = "parallel"
-author = "agent"
+author = "horlapookie"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "WhatsApp Bot"
+args = "Eclipse MD"
 
 [[workflows.workflow]]
-name = "WhatsApp Bot"
-author = "agent"
+name = "Eclipse MD"
+author = "horlapookie"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
