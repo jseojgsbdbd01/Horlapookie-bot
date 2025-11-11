@@ -24,7 +24,7 @@ export default {
 
         // Default to the bot's repo if user asks for "this"
         if (repoUrl.toLowerCase() === 'this' || repoUrl.toLowerCase() === 'horlapookie') {
-            repoUrl = 'https://github.com/horlapookie/Horlapookie-bot';
+            repoUrl = 'https://github.com/horlapookie/Eclise-MD';
         }
 
         // Validate GitHub URL
