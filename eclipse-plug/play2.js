@@ -70,7 +70,7 @@ export default {
           forwardingScore: 1,
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363421539441444@newsletter',
+            newsletterJid: '120363422772567017@newsletter',
             newsletterName: 'Your highness',
             serverMessageId: -1
           }
