@@ -20,133 +20,10 @@
 
 </div>
 
-## 🎭 Terminal Display
-
-When the bot starts, you'll see this animated terminal-style display:
-
-```
-╔═══════════════════════════════════════════╗
-║   ███████╗ ██████╗██╗     ██╗██████╗ ███╗ ║
-║   ██╔════╝██╔════╝██║     ██║██╔══██╗██╔╝ ║
-║   █████╗  ██║     ██║     ██║██████╔╝██║  ║
-║   ██╔══╝  ██║     ██║     ██║██╔═══╝ ██║  ║
-║   ███████╗╚██████╗███████╗██║██║     ███║ ║
-║   ╚══════╝ ╚═════╝╚══════╝╚═╝╚═╝     ╚══╝ ║
-║    ███╗   ███╗██████╗                      ║
-║    ████╗ ████║██╔══██╗                     ║
-║    ██╔████╔██║██║  ██║                     ║
-║    ██║╚██╔╝██║██║  ██║                     ║
-║    ██║ ╚═╝ ██║██████╔╝                     ║
-║    ╚═╝     ╚═╝╚═════╝                      ║
-║           🌟 𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻 v1 🌟            ║
-╚═══════════════════════════════════════════╝
-🚀 Starting 𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻 Bot...
-```
-
-**Bot Name:** 𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻  
-**Creator:** Horlapookie 
-
 ## 📱 Connection Message
 When the bot starts successfully, you'll see this welcome message:
 
 ![Connection Success](https://files.catbox.moe/vtrfi0.jpg)
-
-*The bot sends an automated welcome message with connection details when it comes online*
-
-## ⚠️ CRITICAL WARNING - Bug/Crash Commands
-
-**EXTREME CAUTION REQUIRED!**
-
-This bot includes powerful bug/crash commands that can permanently damage WhatsApp accounts. **USE RESPONSIBLY!**
-
-### 🚨 **Account Ban Risk**
-- These commands can result in **PERMANENT ACCOUNT BANS**
-- WhatsApp actively detects and bans accounts using crash exploits
-- **YOU** are responsible for how you use these features
-- The creator (Horlapookie) is **NOT** liable for any bans or damages
-
-### ☠️ **Available Bug Commands** (Owner-Only)
-1. **crash** - Advanced crash with VenomMods payload (5x attacks)
-2. **xioscrash** - Payment invite bug (50x attacks)
-3. **pmbug** - ⚠️ MOST DANGEROUS - Scheduled call crash (30x, 216KB payload)
-4. **unlimitedbug** - Unlimited attack (100x attacks, 20MB total)
-
-### ✅ **Safe Usage Guidelines**
-- ✅ **ONLY** use on test numbers you own
-- ✅ **NEVER** use on real people without consent
-- ✅ Use sparingly - wait 5-10 minutes between attacks
-- ✅ Understand that these are **testing tools** only
-- ✅ Keep your bot in **self mode** when testing
-- ❌ **DO NOT** spam these commands
-- ❌ **DO NOT** use for harassment or malicious purposes
-
-### 📱 **International Support**
-- All bug commands support international numbers (10-15 digits)
-- Works with any country code
-- Examples: US (1), UK (44), India (91), Nigeria (234), etc.
-
-**BY USING THESE COMMANDS, YOU ACCEPT FULL RESPONSIBILITY FOR ANY CONSEQUENCES!**
-
----
-
-## ✨ Features
-
-### 🤖 AI & Automation
-- **ChatGPT Integration** - AI-powered conversations
-- **Gemini AI** - Google's advanced AI assistant  
-- **Auto React** - Automatically react to messages
-- **Auto Status View** - View status updates automatically
-- **Smart Chatbot** - Intelligent response system
-
-### 🎨 Media Processing
-- **Sticker Creator** - Create animated and static stickers
-- **Image Editor** - Brightness, contrast, filters, effects
-- **Video Tools** - Convert formats, compress, edit
-- **Audio Tools** - Music download, voice messages
-- **Screenshot Tools** - Capture and edit screenshots
-
-### 👥 Group Management
-- **Admin Tools** - Kick, promote, demote members
-- **Welcome Messages** - Custom welcome/goodbye messages
-- **Anti-Link Protection** - Block suspicious links
-- **Group Info** - Detailed group statistics
-- **Tag All** - Mention all group members
-
-### 🎮 Entertainment
-- **Games** - Hangman, trivia, riddles, ship compatibility
-- **Music** - Download songs from YouTube
-- **Memes** - Generate funny content
-- **Logo Creator** - Custom text logos with effects
-- **Quotes** - Inspirational and funny quotes
-
-### 🔧 Utility Tools
-- **Language Translation** - 100+ languages supported
-- **QR Code Generator** - Create QR codes instantly
-- **URL Tools** - Shorten, preview, check links
-- **Code Execution** - Run Python, JavaScript, C++, Java
-- **GitHub Tools** - Repository info, trending projects
-
-### 📡 Developer Tools
-- **GitHub Integration** - Commits, issues, releases tracking
-- **Code Formatter** - Beautiful code syntax highlighting
-- **Web Scraping** - Extract data from websites
-- **API Testing** - Test REST endpoints
-- **JSON Tools** - Parse and format JSON data
-
-## ⚙️ Environment Variables Configuration
-
-You can configure automation features via environment variables in Render dashboard or locally:
-
-### Automation Settings
-```bash
-AUTO_VIEW_MESSAGE=false      # Auto-view view-once messages
-AUTO_VIEW_STATUS=false       # Auto-view WhatsApp statuses
-AUTO_REACT_STATUS=false      # Auto-react to statuses
-AUTO_REACT=false             # Auto-react to messages
-AUTO_STATUS_EMOJI=❤️         # Emoji for status reactions
-AUTO_TYPING=false            # Show typing indicator
-AUTO_RECORDING=false         # Show recording indicator
-```
 
 ### Bot Configuration
 ```bash
@@ -166,11 +43,27 @@ BOT_SESSION_DATA=<session>   # WhatsApp session ID
 
 ## 🚀 Quick Start
 
-## 🚀 One-Click Deploy
+### One-Click Deploy
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/horlapookie/Eclipse-MD)
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/horlapookie/Eclipse-MD)
+<h2 align="center">🚀 One-Click Deploy</h2>
 
+<p align="center">
+  <a href="https://heroku.com/deploy?template=https://github.com/horlapookie/Eclipse-MD">
+    <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku" />
+  </a>
+  <a href="https://render.com/deploy?repo=https://github.com/horlapookie/Eclipse-MD">
+    <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render" />
+  </a>
+  <a href="https://railway.app/new/template?template=https://github.com/horlapookie/Eclipse-MD">
+    <img src="https://railway.app/button.svg" alt="Deploy on Railway" />
+  </a>
+  <a href="https://replit.com/new/github/horlapookie/Eclipse-MD">
+    <img src="https://replit.com/badge/github/horlapookie/Eclipse-MD" alt="Run on Replit" />
+  </a>
+  <a href="https://vercel.com/new/clone?repository-url=https://github.com/horlapookie/Eclipse-MD">
+    <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+  </a>
+</p>
 
 ### Manual Installation
 
@@ -197,11 +90,6 @@ OPENAI_API_KEY=sk-xxx...        # Optional: For AI features
 GEMINI_API_KEY=xxx...           # Optional: For Google AI
 ```
 
-**Important Notes:**
-- `BOT_NUMBER`: Your WhatsApp number **without country code prefix** (e.g., `2348028336218`)
-- All commands that check owner permissions will use this environment variable
-- If `BOT_NUMBER` is not set, the bot falls back to `config.js` default value
-- Owner commands like `.owner`, `.block`, `.unblock`, and all self-mode commands use this number
 
 4. **Run the bot**
 
@@ -215,176 +103,14 @@ GEMINI_API_KEY=xxx...           # Optional: For Google AI
 npm start
 ```
 
-### 📱 WhatsApp Connection
-
-The bot supports **TWO connection methods**:
-
-#### Method 1: Session ID Generator (Recommended) 🌟
-Get your session ID from the official website:
-- 🌐 **Website:** https://horlapookie-session.onrender.com
-- 📋 Copy your session ID and paste it in your `SESSION-ID` file
-- ⚡ Fast startup, no scanning required
-- 🔐 Session persists across restarts
-
-#### Method 2: Terminal Input (Direct Setup) ⚡
-Input your credentials directly when the bot starts:
-- 📱 **Owner Number:** Enter your WhatsApp number when prompted
-- 🔑 **Session ID:** Paste your session ID directly in terminal
-- ⚙️ **Automated Setup:** Bot configures everything automatically
-- 💾 **Persistent Storage:** Settings saved for future startups
-
-### 🤝 Getting Help & Support
-Need assistance with setup? Contact the creator:
-- 📱 **WhatsApp:** +234 912 222 2622
-- ✉️ **Email:** horlapookie@gmail.com
-- 🤝 Direct support and assistance
-- 🎯 Personalized setup help
-
-### 🚨 Important Session Notes
-- **Session ID Method:** Most reliable and fastest connection
-- **Terminal Input:** Quick setup without file editing
-- **Creator Contact:** Best for first-time users or troubleshooting
-- **Note:** Bot does not support pairing codes - use session ID only
-
-### ☁️ Why Deploy to Render?
-- **✅ Free Tier Available:** Get started with Render's free plan
-- **🔧 Auto-Detection:** Automatically detects `render.yaml` blueprint from your forked repo
-- **🐳 Docker Support:** Uses our optimized Dockerfile with all system dependencies pre-installed
-  - Includes: libvips, cairo, pango, ffmpeg, and all native modules
-  - Prevents GLib-GObject errors and ensures stable operation
-  - No manual dependency installation required
-- **📊 Built-in Monitoring:** Track your bot's performance and uptime
-- **🔄 Auto-Deploy:** Automatically redeploys when you push to GitHub
-- **🌐 Custom Domains:** Connect your own domain (optional)
-- **⚡ Fast Deployment:** Bot online in minutes, not hours
-- **🔐 Secure:** Environment variables stored securely in Render dashboard
-
-## 📋 Command Categories
-
-### 🛠️ Basic Tools
-- `?ping` - Check bot latency
-- `?uptime` - Bot uptime statistics  
-- `?info` - Bot information
-- `?menu` - Full command list
-
-### 🤖 AI Commands  
-- `?gpt <message>` - Chat with ChatGPT
-- `?ai <message>` - AI assistant
-- `?translate <text>` - Translate text
-- `?chatbot <message>` - Smart responses
-
-### 🎨 Media Tools
-- `?sticker` - Create stickers from images
-- `?play <song>` - Download music
-- `?img <query>` - Search images
-- `?screenshot <url>` - Capture website
-
-### 👥 Group Tools
-- `?tagall` - Tag all members
-- `?kick @user` - Remove member
-- `?promote @user` - Make admin
-- `?groupinfo` - Group statistics
-
-### 🎮 Fun & Games
-- `?hangman` - Word guessing game
-- `?trivia` - Random trivia questions
-- `?joke` - Random jokes
-- `?ship @user1 @user2` - Compatibility test (aliases: `couple`, `pair`)
-
-### 🔧 Utility
-- `?qr <text>` - Generate QR code
-- `?shorten <url>` - Shorten URLs
-- `?weather <city>` - Weather forecast
-- `?time` - Current time
-
-## 🔧 Configuration
-
-### Environment Variables Priority
-The bot reads configuration in this order:
-1. **Environment Variables** (highest priority) - Set in Render dashboard or `.env` file
-2. **config.js** - Fallback default values
-
-**Environment variables that override config.js:**
-- `BOT_NUMBER` → Overrides `config.ownerNumber`
-- `BOT_PREFIX` → Overrides `config.prefix`
-- `BOT_NAME` → Overrides `config.botName`
-- `BOT_OWNER_NAME` → Overrides `config.ownerName`
-- `BOT_SESSION_DATA` → Overrides `SESSION-ID` file
-
-**Commands affected by BOT_NUMBER:**
-- `.owner` - Sends owner contact card
-- `.block` / `.unblock` - Owner verification
-- All `/commands/self/*` - Self-mode commands
-- Owner permission checks throughout the bot
-
-### Bot Settings
-- **Prefix**: Default `.` (configurable via `BOT_PREFIX`)
-- **Owner**: Set via `BOT_OWNER` environment variable
-- **Mode**: Public (responds to everyone) / Self (owner only)
-- **Auto Features**: Reactions, typing, status viewing
-- **Language**: Multi-language support
-
-### API Integrations
-- **OpenAI**: For advanced AI conversations
-- **Google Gemini**: Alternative AI provider
-- **GitHub**: Repository information and trends
-- **Weather APIs**: Location-based weather data
-
-## 🛡️ Security Features
-
-- **Environment Variables** - All credentials stored securely
-- **Owner Protection** - Restricted admin commands
-- **Anti-Spam** - Rate limiting and flood protection
-- **Session Security** - Encrypted WhatsApp sessions
-- **Input Validation** - Sanitized user inputs
-
-## 📊 Statistics
-
-- **300+ Commands** across all categories
-- **Multi-language** translation support
-- **Cross-platform** compatibility
-- **24/7 Uptime** capability
-- **Low Resource** usage
-- **Fast Response** times
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Bot won't connect?**
-- Check your internet connection
-- Verify SESSION-ID format
-- Try terminal input method
-- Restart the bot service
-
-**Commands not working?**
-- Check command prefix (default: ?)
-- Verify you're using correct syntax
-- Ensure bot has necessary permissions
-- Check API key configuration
-
-**Missing features?**
-- Install missing dependencies: `npm install`
-- Configure required API keys
-- Check bot permissions in group
-- Review error logs
-
-### Getting Help
-
-1. **Check Logs** - Look for error messages
-2. **Verify Setup** - Ensure all steps completed
-3. **Test Commands** - Try basic commands first
-4. **Check Permissions** - Bot needs admin rights for group features
-5. **Update Dependencies** - Keep packages current
-
 ## 👨‍💻 Developer
 <!-- Animated Typing Effect -->
 ![Typing SVG](https://readme-typing-svg.demolab.com/?lines=𝔼𝕔𝕝𝕚𝕡𝕤𝕖+𝕄𝔻+v1&font=Fira+Code&color=00C853&size=28&center=true&vCenter=true&width=800&height=50&duration=3000&pause=1000)
 
 **Created by**: Eclipse MD Team  
 **GitHub**: [@horlapookie](https://github.com/horlapookie)  
-**WhatsApp**: +234 912 222 2622  
-**Email**: horlapookie@gmail.com  
+**WhatsApp**: +2347055517860  
+**Email**: olamilekanidowu998@gmail.com  
 
 ### Support the Project
 ⭐ **Star this repository** if you find it helpful!  
@@ -398,12 +124,6 @@ The bot reads configuration in this order:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- **Baileys** - WhatsApp Web API library
-- **OpenAI** - AI conversation capabilities  
-- **Contributors** - Community members who helped improve the bot
-- **Users** - Everyone who uses and tests the bot
 
 ---
 
