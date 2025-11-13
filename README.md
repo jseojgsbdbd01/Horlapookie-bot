@@ -46,15 +46,29 @@ BOT_SESSION_DATA=<session>   # WhatsApp session ID
 ### One-Click Deploy
 
 <p align="center">
-  🚀 **One-Click Deploy**
+  🚀 <b>One-Click Deploy</b>
 </p>
 
 <p align="center">
-  [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/horlapookie/Eclipse-MD)
-  [![Deploy on Render](https://img.shields.io/badge/Render-Deploy-green?logo=render)](https://render.com/deploy?repo=https://github.com/horlapookie/Eclipse-MD)
-  [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/horlapookie/Eclipse-MD)
-  [![Run on Replit](https://replit.com/badge/github/horlapookie/Eclipse-MD)](https://replit.com/new/github/horlapookie/Eclipse-MD)
-  [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/horlapookie/Eclipse-MD)
+  <a href="https://heroku.com/deploy?template=https://github.com/horlapookie/Eclipse-MD">
+    <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku" />
+  </a>
+  
+  <a href="https://render.com/deploy?repo=https://github.com/horlapookie/Eclipse-MD">
+    <img src="https://img.shields.io/badge/Render-Deploy-green?logo=render" alt="Deploy to Render" />
+  </a>
+  
+  <a href="https://railway.app/new/template?template=https://github.com/horlapookie/Eclipse-MD">
+    <img src="https://railway.app/button.svg" alt="Deploy on Railway" />
+  </a>
+  
+  <a href="https://replit.com/new/github/horlapookie/Eclipse-MD">
+    <img src="https://replit.com/badge/github/horlapookie/Eclipse-MD" alt="Run on Replit" />
+  </a>
+  
+  <a href="https://vercel.com/new/clone?repository-url=https://github.com/horlapookie/Eclipse-MD">
+    <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+  </a>
 </p>
 
 ### Manual Installation
