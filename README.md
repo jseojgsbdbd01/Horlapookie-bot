@@ -50,24 +50,29 @@ BOT_SESSION_DATA=<session>   # WhatsApp session ID
 </p>
 
 <p align="center">
+  <!-- Heroku -->
   <a href="https://heroku.com/deploy?template=https://github.com/horlapookie/Eclipse-MD">
     <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku" />
   </a>
   
+  <!-- Render -->
   <a href="https://render.com/deploy?repo=https://github.com/horlapookie/Eclipse-MD">
-    <img src="https://img.shields.io/badge/Render-Deploy-green?logo=render" alt="Deploy to Render" />
+    <img src="https://raw.githubusercontent.com/horlapookie/Eclipse-MD/main/assets/render-deploy.svg" alt="Deploy to Render" />
   </a>
   
+  <!-- Railway -->
   <a href="https://railway.app/new/template?template=https://github.com/horlapookie/Eclipse-MD">
     <img src="https://railway.app/button.svg" alt="Deploy on Railway" />
   </a>
   
+  <!-- Replit -->
   <a href="https://replit.com/new/github/horlapookie/Eclipse-MD">
     <img src="https://replit.com/badge/github/horlapookie/Eclipse-MD" alt="Run on Replit" />
   </a>
   
+  <!-- Vercel -->
   <a href="https://vercel.com/new/clone?repository-url=https://github.com/horlapookie/Eclipse-MD">
-    <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+    <img src="https://raw.githubusercontent.com/horlapookie/Eclipse-MD/main/assets/vercel-deploy.svg" alt="Deploy with Vercel" />
   </a>
 </p>
 
