@@ -166,37 +166,11 @@ BOT_SESSION_DATA=<session>   # WhatsApp session ID
 
 ## 🚀 Quick Start
 
-### One-Click Deploy to Render
+### One-Click Deploy
 
-The easiest way to deploy this bot is with Render's one-click deploy:
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/horlapookie/Eclipse-MD)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/horlapookie/Eclipse-MD)
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
-
-**How it works:**
-1. **Fork this repository** to your GitHub account first
-2. Click the "Deploy to Render" button above
-3. Sign in to Render (or create a free account)
-4. **Connect your GitHub account** to Render
-5. Select **your forked repository** from the list
-6. Render will automatically detect the `render.yaml` blueprint
-7. Configure your environment variables in Render dashboard:
-   - `BOT_SESSION_DATA` - **REQUIRED** - Your session ID (get from https://horlapookie-session.onrender.com)
-   - `BOT_NUMBER` - **REQUIRED** - Your WhatsApp number without + or country code prefix
-     - Example: `2348028336218` (not `+2348028336218`)
-     - Used by: Owner verification, `.owner` command, all self-mode commands, `.block`, `.unblock`
-   - `OPENAI_API_KEY` - Optional: For AI features (GPT, ChatGPT commands)
-   - `GEMINI_API_KEY` - Optional: For Google AI features
-   - `BOT_PREFIX` - Command prefix (default: `.`)
-   - `BOT_NAME` - Your bot name (optional, default: 𝔼𝕔𝕝𝕚𝕡𝕤𝕖 𝕄𝔻)
-   - `BOT_OWNER_NAME` - Your display name (optional, default: Eclipse)
-8. Click "Create Web Service" and your bot will be deployed using Docker!
-
-**Important:** The bot uses **Docker** for deployment to ensure all system libraries (libvips, cairo, pango, ffmpeg) are properly installed. This prevents GLib-GObject errors and ensures stable operation.
-
-### Prerequisites
-- Node.js 18+ installed
-- WhatsApp account
-- API keys for enhanced features (optional)
 
 ### Manual Installation
 
